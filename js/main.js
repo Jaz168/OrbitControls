@@ -1,56 +1,57 @@
-import * as THREE from "/ORBITCONTROL/src/three.module.js";
-import { OrbitControls } from "/ORBITCONTROL/src/OrbitControls.js";
-//creating scene
-var scene = new THREE.Scene();
-scene.background = new THREE.Color(0x2a3b4c);
+import * as THREE from "../src/three.module.js";
+import { OrbitControls } from "../src/OrbitControls.js";
 
-//add camera
-var camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight
-);
+        //creating scene
+        var scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x2a3b4c);
 
-//renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+      //add camera
+      var camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight
+      );
 
-//add geometry
-var geometry = new THREE.BoxGeometry();
-var material = new THREE.MeshBasicMaterial({
-  color: 0x00ff00,
-  wireframe: true,
-});
-var cube = new THREE.Mesh(geometry, material);
+      //renderer
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
 
-scene.add(cube);
+      //add geometry
+      var geometry = new THREE.BoxGeometry();
+      var material = new THREE.MeshBasicMaterial({
+        color: 0x00ff00,
+        wireframe: true,
+      });
+      var cube = new THREE.Mesh(geometry, material);
 
-camera.position.z = 5;
+      scene.add(cube);
 
-var controls = new OrbitControls(camera, renderer.domElement);
+      camera.position.z = 5;
 
-controls.minDistance = 3;
-controls.maxDistance = 10;
+      var controls = new OrbitControls(camera, renderer.domElement);
 
-// controls.enableZoom = false;
+      controls.minDistance = 3;
+      controls.maxDistance = 10;
 
-// controls.enableRotate = false;
+      //controls.enableZoom = false;
 
-controls.enableDamping = true;
-controls.dampingFactor = 0.5;
+      //controls.enableRotate = false;
 
-controls.maxPolarAngle = Math.PI;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.5;
 
-controls.screenSpacePanning = true;
+      controls.maxPolarAngle = Math.PI;
 
-//animation
-var animate = function () {
-  requestAnimationFrame(animate);
+      controls.screenSpacePanning = true;
 
-//   cube.rotation.x += 0.01;
-//   cube.rotation.y += 0.01;
+      //animation
+      var animate = function () {
+        requestAnimationFrame(animate);
 
-  renderer.render(scene, camera);
-};
+        //cube.rotation.x += 0.01;
+        //cube.rotation.y += 0.01;
 
-animate();
+        renderer.render(scene, camera);
+      };
+
+      animate();
